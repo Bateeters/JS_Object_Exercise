@@ -1,5 +1,7 @@
 // 1. Basic Object Creation
 // Create an object car with properties make, model, and year, and a method start() that logs "Engine started".
+console.log("Exercise 1");
+
 const Car = {
     make : "Toyota",
     model: "Avalon",
@@ -23,13 +25,15 @@ const Car = {
 
 
 
+/*
 // 2. Constructor Functions
 // Create a constructor function Person that takes name and age as parameters and assigns them as properties.
+console.log("Exercise 2");
+
 function Person(name, age){
     this.name = name;
     this.age = age;
 }
-
 
 
 // Exercise: Use the Person constructor to create a new user. Save it to the "person1" variable and log the user's name.
@@ -44,11 +48,13 @@ Person.prototype.greet = function() {
 };
 
 console.log(person1.greet());
-
+*/
 
 
 // 3. Prototypal Inheritance
 // Create a Vehicle constructor that specifies what kind of vehicle.
+console.log("Exercise 3");
+
 function Vehicle(type){
     this.type = type;
 };
@@ -68,7 +74,7 @@ function Airplane(make,model){
 
     Vehicle.call(this,"airplane"); // Added to send back "airplane" to Vehicle for describe()
 
-    
+
 };
 
 
@@ -89,4 +95,64 @@ console.log(airplane1.describe());
 
 
 
-// Exercise: Add a method Car.prototype.drive() that logs "Vroom vroom!".
+// Exercise: Add a method Airplane.prototype.fly() that logs "Clear for takeoff."
+Airplane.prototype.fly = function() {
+    console.log("Clear for takeoff.");
+};
+
+
+
+// 4. Object.create()
+// Use Object.create() to create an object that inherits from another.
+console.log("Exercise 4");
+
+const animal = {
+    speak: function() {
+        console.log("Some generic animal sound");
+    }
+};
+
+const dog = Object.create(animal); // Creates an object called "dog" that inherits from "animal" class
+dog.speak(); // Output: Some generic animal sound
+
+
+// Exercise: Override the speak() method in dog to log "Woof!"
+dog.speak = function() {
+    console.log("Woof!");
+};
+
+
+
+// 5. ES6 Classes
+// Rewrite the Person constructor from Exercise 2 using ES6 class syntax.
+console.log("Exercise 5");
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet() {
+        console.log(`Hello, my name is ${this.name}`);
+    }
+};
+
+const p1 = new Person("Bob", 18);
+p1.greet(); // "Hello, my name is Bob"
+
+
+// Exercise: Create a Student class that extends Person and adds a study() method.
+class Student extends Person {
+    constructor(name, age, subject){
+        super(name, age);
+        this.subject = subject;
+    }
+
+    study() {
+        console.log(`${this.name} is studying ${this.subject}`);
+    }
+};
+
+const s1 = new Student("Brian", 30, "Software Development");
+s1.greet();
+s1.study();
